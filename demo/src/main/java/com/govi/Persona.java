@@ -24,6 +24,23 @@ public class Persona {
         this.email = email;
     }
 
+    public static Persona factoryMethod(String cadena){
+        if(cadena==null){
+            throw new IllegalArgumentException("Argumentos no válidos");
+        }
+        String partes[]=cadena.split(",");
+        if(partes.length!=4){
+            throw new IllegalArgumentException("Argumentos inválidos");
+        }
+        try{
+            int e = Integer.parseInt(partes[2]);
+            return new Persona(partes[0], partes[1], e, partes[3]);
+
+        }catch(Exception e ){
+            throw new IllegalArgumentException("Argumentos inválidos");
+        }
+    }
+
     /**
      *  getter de nombre
      * @return el nombre de la persona
